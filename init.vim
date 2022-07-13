@@ -9,6 +9,8 @@ colorscheme tokyodark
 lua require('plugin-config/nvim-tree')
 lua require('plugin-config/bufferline')
 lua require('plugin-config/nvim-treesitter')
+lua require('plugin-config/indent-blankline')
+lua require('plugin-config/formatter')
 
 lua require('lsp/nvim-lsp-installer')
 lua require('lsp/nvim-lspconfig')

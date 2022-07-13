@@ -13,8 +13,8 @@ vim.wo.signcolumn = "yes"
 -- 右侧参考线，超过表示代码太长了，考虑换行
 vim.wo.colorcolumn = "80"
 -- 缩进2个空格等于一个Tab
-vim.o.tabstop = 2
-vim.bo.tabstop = 2
+vim.o.tabstop = 4
+vim.bo.tabstop = 4
 vim.o.softtabstop = 2
 vim.o.shiftround = true
 -- >> << 时移动长度
@@ -54,9 +54,9 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
 -- smaller updatetime 
-vim.o.updatetime = 300
+vim.o.updatetime = 750
 -- 等待mappings
-vim.o.timeoutlen = 200
+vim.o.timeoutlen = 500
 -- split window 从下边和右边出现
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -67,7 +67,8 @@ vim.o.background = "dark"
 vim.o.termguicolors = true
 vim.opt.termguicolors = true
 -- 不可见字符的显示，这里只把空格显示为一个点
-vim.o.list = true
+vim.o.list = false
+vim.o.showmatch = true
 vim.o.listchars = "space:·"
 -- 补全增强
 vim.o.wildmenu = true
@@ -76,3 +77,23 @@ vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.pumheight = 10
 -- always show tabline
 vim.o.showtabline = 2
+-- System clipboard Sync
+vim.o.clipboard = 'unnamedplus'
+
+vim.cmd "set whichwrap+=<,>,[,],h,l"
+
+--WSL与Windows同步剪贴板
+vim.cmd([[
+let g:clipboard = {
+	\   'name': 'win32yank-wsl',
+	\   'copy': {
+	\      '+': 'win32yank.exe -i --crlf',
+	\      '*': 'win32yank.exe -i --crlf',
+	\    },
+	\   'paste': {
+	\      '+': 'win32yank.exe -o --lf',
+	\      '*': 'win32yank.exe -o --lf',
+	\   },
+	\   'cache_enabled': 0,
+	\ }
+]])

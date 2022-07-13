@@ -1,3 +1,10 @@
+vim.cmd [[
+	augroup packer_user_config
+		autocmd!
+		autocmd BufWritePost plugins.lua source <afile> | PackerSync
+	augroup end
+]]
+
 return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -9,6 +16,9 @@ return require('packer').startup(function()
 
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use "lukas-reineke/indent-blankline.nvim"
+    use "mhartington/formatter.nvim"
+
 
     use {'neovim/nvim-lspconfig', 'williamboman/nvim-lsp-installer', 
     'tamago324/nlsp-settings.nvim'}
